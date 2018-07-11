@@ -1,0 +1,6 @@
+framework module Pods_PhotoShareFetch {
+  umbrella header "Pods-PhotoShareFetch-umbrella.h"
+
+  export *
+  module * { export * }
+}
