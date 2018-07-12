@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseUI
 
 class LoginViewController: UIViewController {
+    //handling future namespace conflicts
+    //(use FIRUser instead of User )
+    typealias FIRUser = FirebaseAuth.User
  
     // MARK: - Properties
     
@@ -24,7 +29,30 @@ class LoginViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
-        print("enter something")
+       
+        // access the FUIAuth default auth UI singleton
+        guard let authUI = FUIAuth.defaultAuthUI()
+            else { return }
+        
+        // set the FUIAuth's singleton's delegate
+        authUI.delegate = self
+        
+        // present the auth view controller
+        let authViewController = authUI.authViewController()
+        present(authViewController, animated: true)
     }
 
 }
+//conform to the FUIAuthDelegate protocol and catching errors
+
+extension LoginViewController: FUIAuthDelegate {
+    func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
+        if let error = error {
+            assertionFailure("Error signing in: \(error.localizedDescription)")
+            return
+        }
+        
+        print("handle user signup / login")
+    }
+    }
+
