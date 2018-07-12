@@ -17,6 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
             FirebaseApp.configure()
+        
+        //connect to loginstoryboard
+        let storyboard = UIStoryboard(name: "Login", bundle: .main)
+        
+        if let initialViewController = storyboard.instantiateInitialViewController() {
+            window?.rootViewController = initialViewController
+            // Position the window above any other existing windows
+            window?.makeKeyAndVisible()
+        }
+
             return true
         
     }
