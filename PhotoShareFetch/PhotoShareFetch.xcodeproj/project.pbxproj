@@ -13,8 +13,10 @@
 		8416D1B620F654AB002494AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8416D1B520F654AB002494AC /* Assets.xcassets */; };
 		8416D1B920F654AB002494AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8416D1B720F654AB002494AC /* LaunchScreen.storyboard */; };
 		8416D1C320F660F2002494AC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8416D1C220F660F2002494AC /* GoogleService-Info.plist */; };
+		84569EC420F8950800FA983D /* CreateUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84569EC320F8950800FA983D /* CreateUsernameViewController.swift */; };
 		8486449B20F7358600B1BBD9 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8486449A20F7358600B1BBD9 /* Login.storyboard */; };
 		8486449D20F7369D00B1BBD9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486449C20F7369D00B1BBD9 /* LoginViewController.swift */; };
+		8486449F20F75C8F00B1BBD9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486449E20F75C8F00B1BBD9 /* User.swift */; };
 		DBC84BBB9E6B07D36232F053 /* Pods_PhotoShareFetch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7678D20B7AEBDEAA75EA4D9F /* Pods_PhotoShareFetch.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,8 +30,10 @@
 		8416D1B820F654AB002494AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8416D1BA20F654AB002494AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8416D1C220F660F2002494AC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		84569EC320F8950800FA983D /* CreateUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameViewController.swift; sourceTree = "<group>"; };
 		8486449A20F7358600B1BBD9 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		8486449C20F7369D00B1BBD9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8486449E20F75C8F00B1BBD9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D4EE2C9165BEA0C9FB9C66CE /* Pods-PhotoShareFetch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoShareFetch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoShareFetch/Pods-PhotoShareFetch.debug.xcconfig"; sourceTree = "<group>"; };
 		F2D121ED03022EACC9B1441A /* Pods-PhotoShareFetch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoShareFetch.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoShareFetch/Pods-PhotoShareFetch.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -51,10 +55,10 @@
 			children = (
 				8416D1AD20F654A9002494AC /* PhotoShareFetch */,
 				8416D1CB20F69241002494AC /* View */,
+				8416D1C720F691E0002494AC /* Models */,
 				8416D1C420F69186002494AC /* Controllers */,
 				8416D1C820F691ED002494AC /* Services */,
 				8416D1C620F691C5002494AC /* Helpers */,
-				8416D1C720F691E0002494AC /* Models */,
 				8416D1C520F691A2002494AC /* Extensions */,
 				8416D1C920F69209002494AC /* Storyboards */,
 				8416D1B520F654AB002494AC /* Assets.xcassets */,
@@ -86,6 +90,7 @@
 			children = (
 				8416D1B020F654A9002494AC /* ViewController.swift */,
 				8486449C20F7369D00B1BBD9 /* LoginViewController.swift */,
+				84569EC320F8950800FA983D /* CreateUsernameViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -107,6 +112,7 @@
 		8416D1C720F691E0002494AC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8486449E20F75C8F00B1BBD9 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -300,8 +306,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8486449F20F75C8F00B1BBD9 /* User.swift in Sources */,
 				8486449D20F7369D00B1BBD9 /* LoginViewController.swift in Sources */,
 				8416D1B120F654A9002494AC /* ViewController.swift in Sources */,
+				84569EC420F8950800FA983D /* CreateUsernameViewController.swift in Sources */,
 				8416D1AF20F654A9002494AC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

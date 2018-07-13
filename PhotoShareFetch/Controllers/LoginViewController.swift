@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseUI
+import FirebaseDatabase
 
 class LoginViewController: UIViewController {
     //handling future namespace conflicts
@@ -43,6 +44,7 @@ class LoginViewController: UIViewController {
     }
 
 }
+
 //conform to the FUIAuthDelegate protocol and catching errors
 
 extension LoginViewController: FUIAuthDelegate {
@@ -51,8 +53,24 @@ extension LoginViewController: FUIAuthDelegate {
             assertionFailure("Error signing in: \(error.localizedDescription)")
             return
         }
+        // check
+        guard let user = authDataResult?.user
+            else { return }
         
-        print("handle user signup / login")
+        // construct a relative path to the reference of the user's information in the database.
+let userRef = Database.database().reference().child("users").child(user.uid)
+        
+        // read from the path
+        userRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            // retrieve user data from snapshot
+            if let user = User(snapshot: snapshot) {
+                print("Welcome back, \(user.username).")
+            } else {
+                self.performSegue(withIdentifier: "toCreateUsername", sender: self)
+            }
+            
+        })
     }
     }
 
