@@ -34,14 +34,12 @@ class CreateUsernameViewController: UIViewController {
             
             User.setCurrent(user)
             
-        let storyboard = UIStoryboard(name: "Main", bundle: .main)
-       
-        //Check that the storyboard has an initial view controller
-        if let initialViewController = storyboard.instantiateInitialViewController() {
+          let initialViewController = UIStoryboard.initialViewController(for: .main)
+      
             //Get reference to the current window and set the rootViewController to the initial view controller
             self.view.window?.rootViewController = initialViewController
             self.view.window?.makeKeyAndVisible()
-        }
+        
 }
 }
 }
