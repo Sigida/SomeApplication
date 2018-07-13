@@ -57,12 +57,10 @@ extension LoginViewController: FUIAuthDelegate {
         guard let user = authDataResult?.user
             else { return }
         
-        // construct a relative path to the reference of the user's information in the database.
-let userRef = Database.database().reference().child("users").child(user.uid)
-        
-        // read from the path
-        userRef.observeSingleEvent(of: .value, with: { [unowned self] (snapshot) in
-            if let user = User(snapshot: snapshot) {
+       
+        UserService.show(forUID: user.uid) { (user) in
+            if let user = user {
+                // handle existing user
                 User.setCurrent(user)
                 
                 let storyboard = UIStoryboard(name: "Main", bundle: .main)
@@ -71,9 +69,10 @@ let userRef = Database.database().reference().child("users").child(user.uid)
                     self.view.window?.makeKeyAndVisible()
                 }
             } else {
+                // handle new user
                 self.performSegue(withIdentifier: "toCreateUsername", sender: self)
             }
-        })
+        }
     }
     }
 

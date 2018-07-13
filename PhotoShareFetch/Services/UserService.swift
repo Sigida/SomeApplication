@@ -14,6 +14,21 @@ struct UserService {
     
     typealias FIRUser = FirebaseAuth.User
     
+    
+    static func show(forUID uid: String, completion: @escaping (User?) -> Void) {
+        
+        // construct a relative path to the reference of the user's information in the database.
+        let ref = Database.database().reference().child("users").child(uid)
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let user = User(snapshot: snapshot) else {
+                return completion(nil)
+            }
+            
+            completion(user)
+        })
+    }
+    
     static func create(_ firUser: FIRUser, username: String, completion: @escaping (User?) -> Void) {
         
         
