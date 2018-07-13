@@ -26,25 +26,22 @@ class CreateUsernameViewController: UIViewController {
             let username = usernameTextField.text,
             !username.isEmpty else { return }
         
-        // create a dictionary to store the username the user has provided inside the database
-        let userAttrs = ["username": username]
-        
-        // specify a relative path for the location of where we want to store our data
-        let ref = Database.database().reference().child("users").child(firUser.uid)
-        
-        // write the data we want to store
-        ref.setValue(userAttrs) { (error, ref) in
-            if let error = error {
-                assertionFailure(error.localizedDescription)
+        UserService.create(firUser, username: username) { (user) in
+            guard let user = user else {
+                // handle error
                 return
             }
             
-            //read the user we just wrote to the database and create a user from the snapshot
-            ref.observeSingleEvent(of: .value, with: { (snapshot) in
-                let user = User(snapshot: snapshot)
-                
-                // handle newly created user here
-            })
+            User.setCurrent(user)
+            
+        let storyboard = UIStoryboard(name: "Main", bundle: .main)
+       
+        //Check that the storyboard has an initial view controller
+        if let initialViewController = storyboard.instantiateInitialViewController() {
+            //Get reference to the current window and set the rootViewController to the initial view controller
+            self.view.window?.rootViewController = initialViewController
+            self.view.window?.makeKeyAndVisible()
         }
-    }
+}
+}
 }
