@@ -10,7 +10,7 @@ import Foundation
 import Foundation
 import FirebaseDatabase.FIRDataSnapshot
 
-class User {
+class User: Codable {
     
     // MARK: - Properties
     
@@ -49,7 +49,18 @@ class User {
     // MARK: - Class Methods
     
     //custom setter method to set the current user.
-    static func setCurrent(_ user: User) {
+    static func setCurrent(_ user: User, writeToUserDefaults: Bool = false) {
+       
+        if writeToUserDefaults {
+          
+            if let data = try? JSONEncoder().encode(user) {
+             
+                UserDefaults.standard.set(data, forKey: Constants.UserDefaults.currentUser)
+            }
+        }
+        
         _current = user
     }
+
+    
 }
