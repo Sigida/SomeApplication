@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             FirebaseApp.configure()
         
         //connect to loginstoryboard
-     let initialViewController = UIStoryboard.initialViewController(for: .login)
+        let initialViewController = UIStoryboard.initialViewController(for: .login)
             window?.rootViewController = initialViewController
             // Position the window above any other existing windows
             window?.makeKeyAndVisible()
