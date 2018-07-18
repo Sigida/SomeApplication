@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8410E30B20FA30E200401577 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410E30A20FA30E200401577 /* HomeViewController.swift */; };
 		8410E30D20FA30F900401577 /* FindFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8410E30C20FA30F900401577 /* FindFriendsViewController.swift */; };
+		8411C16020FF6CF50085D9B6 /* PSFPhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8411C15F20FF6CF50085D9B6 /* PSFPhotoHelper.swift */; };
 		8412D23620F8BF1B009962D5 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8412D23520F8BF1B009962D5 /* UserService.swift */; };
 		8412D23820F8CCD1009962D5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8412D23720F8CCD1009962D5 /* Constants.swift */; };
 		8412D23A20F8CF3F009962D5 /* Storyboard+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8412D23920F8CF3F009962D5 /* Storyboard+Utility.swift */; };
@@ -29,6 +30,7 @@
 		7678D20B7AEBDEAA75EA4D9F /* Pods_PhotoShareFetch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoShareFetch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8410E30A20FA30E200401577 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8410E30C20FA30F900401577 /* FindFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsViewController.swift; sourceTree = "<group>"; };
+		8411C15F20FF6CF50085D9B6 /* PSFPhotoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PSFPhotoHelper.swift; sourceTree = "<group>"; };
 		8412D23520F8BF1B009962D5 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		8412D23720F8CCD1009962D5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8412D23920F8CF3F009962D5 /* Storyboard+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard+Utility.swift"; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		8416D1C620F691C5002494AC /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				8411C15F20FF6CF50085D9B6 /* PSFPhotoHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				8412D23620F8BF1B009962D5 /* UserService.swift in Sources */,
 				8410E30B20FA30E200401577 /* HomeViewController.swift in Sources */,
 				8412D23A20F8CF3F009962D5 /* Storyboard+Utility.swift in Sources */,
+				8411C16020FF6CF50085D9B6 /* PSFPhotoHelper.swift in Sources */,
 				8410E30D20FA30F900401577 /* FindFriendsViewController.swift in Sources */,
 				8412D23820F8CCD1009962D5 /* Constants.swift in Sources */,
 				84569EC420F8950800FA983D /* CreateUsernameViewController.swift in Sources */,
