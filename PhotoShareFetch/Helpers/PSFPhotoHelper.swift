@@ -19,7 +19,7 @@ class PSFPhotoHelper: NSObject {
     func presentActionSheet(from viewController: UIViewController) {
         
         let alertController = UIAlertController(title: nil, message: "Where do you want to get your picture from?", preferredStyle: .actionSheet)
-        
+    
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
           
             let capturePhotoAction = UIAlertAction(title: "Take Photo", style: .default, handler: { [unowned self] action in
@@ -49,8 +49,24 @@ class PSFPhotoHelper: NSObject {
     func presentImagePickerController(with sourceType: UIImagePickerControllerSourceType, from viewController: UIViewController) {
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = sourceType
-        
+        //implenent delegate
+        imagePickerController.delegate = self
         viewController.present(imagePickerController, animated: true)
     }
 
+}
+//implement protocol
+extension PSFPhotoHelper: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            //accsess to image
+            completionHandler?(selectedImage)
+        }
+        
+        picker.dismiss(animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
 }
