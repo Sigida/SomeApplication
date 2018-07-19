@@ -22,18 +22,19 @@ class PSFPhotoHelper: NSObject {
         
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
           
-            let capturePhotoAction = UIAlertAction(title: "Take Photo", style: .default, handler: { action in
-               
+            let capturePhotoAction = UIAlertAction(title: "Take Photo", style: .default, handler: { [unowned self] action in
+                self.presentImagePickerController(with: .camera, from: viewController)
             })
             
             alertController.addAction(capturePhotoAction)
         }
         
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-            let uploadAction = UIAlertAction(title: "Upload from Library", style: .default, handler: { action in
-             
-            })
             
+            let uploadAction = UIAlertAction(title: "Upload from Library", style: .default, handler: { [unowned self] action in
+                self.presentImagePickerController(with: .photoLibrary, from: viewController)
+            })
+
             alertController.addAction(uploadAction)
         }
         
@@ -43,6 +44,13 @@ class PSFPhotoHelper: NSObject {
         //  Present the UIAlertController from our UIViewController.  pass in a reference from the view controller presenting the alert controller for this method to properly present the UIAlertController.
         viewController.present(alertController, animated: true)
         
+    }
+    
+    func presentImagePickerController(with sourceType: UIImagePickerControllerSourceType, from viewController: UIViewController) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = sourceType
+        
+        viewController.present(imagePickerController, animated: true)
     }
 
 }
