@@ -25,8 +25,7 @@ struct PostService {
             create(forURLString: urlString, aspectHeight: aspectHeight)
         }
 }
-    // create a new Post JSON object in database
-    //improved the photo upload mechanism
+    // create new post in database
     private static func create(forURLString urlString: String, aspectHeight: CGFloat) {
         
         // Create a reference to the current user. We'll need the user's UID to construct the location of where we'll store our post data in our database.

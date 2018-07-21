@@ -10,7 +10,6 @@ import Foundation
 import FirebaseStorage
 
 extension StorageReference {
-    
     static let dateFormatter = ISO8601DateFormatter()
     
     static func newPostImageReference() -> StorageReference {
