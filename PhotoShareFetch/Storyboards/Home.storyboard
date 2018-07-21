@@ -16,10 +16,39 @@
                     <view key="view" contentMode="scaleToFill" id="bVe-Iv-Wgx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lCA-J2-1HR">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostImageCell" id="Idp-Iq-a3l">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Idp-Iq-a3l" id="Kfu-2g-rnO">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="m95-A3-O9N" id="BRO-TH-JN5"/>
+                                    <outlet property="delegate" destination="m95-A3-O9N" id="SWv-t1-Rab"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lCA-J2-1HR" firstAttribute="top" secondItem="bVe-Iv-Wgx" secondAttribute="top" id="KHT-Ec-Ya1"/>
+                            <constraint firstItem="lCA-J2-1HR" firstAttribute="leading" secondItem="bVe-Iv-Wgx" secondAttribute="leading" id="KRR-n8-Q0X"/>
+                            <constraint firstAttribute="trailing" secondItem="lCA-J2-1HR" secondAttribute="trailing" id="PAW-G1-aNs"/>
+                            <constraint firstAttribute="bottom" secondItem="lCA-J2-1HR" secondAttribute="bottom" id="cqb-wM-Im7"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="EMP-mJ-N2M"/>
                     </view>
                     <navigationItem key="navigationItem" id="atp-1K-V5y"/>
+                    <connections>
+                        <outlet property="tableView" destination="lCA-J2-1HR" id="UfX-az-yhk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rCI-Bh-USf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
