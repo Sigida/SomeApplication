@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Storyboards/Home.storyboard">
+      location = "group:/Users/admin/Documents/&#x420;&#x435;&#x43f;&#x43e;&#x437;&#x438;&#x442;&#x43e;&#x440;&#x438;&#x438;&#x306; &#x43f;&#x43e;&#x440;&#x442;&#x444;&#x43e;&#x43b;&#x438;&#x43e;/Any App/SomeApplication/PhotoShareFetch/Storyboards/Home.storyboard">
    </FileRef>
    <FileRef
       location = "group:PhotoShareFetch.xcodeproj">
