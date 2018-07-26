@@ -25,6 +25,7 @@
 		84527A602100A38B00F46C99 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84527A5F2100A38B00F46C99 /* PostService.swift */; };
 		84569EC420F8950800FA983D /* CreateUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84569EC320F8950800FA983D /* CreateUsernameViewController.swift */; };
 		8459AE0E20FF27A500E367D7 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8459AE0D20FF27A500E367D7 /* MainTabBarController.swift */; };
+		8463934F2109EA03006AE8CD /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8463934E2109EA03006AE8CD /* Home.storyboard */; };
 		8486449B20F7358600B1BBD9 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8486449A20F7358600B1BBD9 /* Login.storyboard */; };
 		8486449D20F7369D00B1BBD9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486449C20F7369D00B1BBD9 /* LoginViewController.swift */; };
 		8486449F20F75C8F00B1BBD9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486449E20F75C8F00B1BBD9 /* User.swift */; };
@@ -51,9 +52,9 @@
 		8416D1C220F660F2002494AC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84527A5D21008B8700F46C99 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		84527A5F2100A38B00F46C99 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
-		84549EEC2109C02E002E9BB8 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Home.storyboard; path = "/Users/admin/Documents/Репозиторий портфолио/Any App/SomeApplication/PhotoShareFetch/Storyboards/Home.storyboard"; sourceTree = "<absolute>"; };
 		84569EC320F8950800FA983D /* CreateUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameViewController.swift; sourceTree = "<group>"; };
 		8459AE0D20FF27A500E367D7 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		8463934E2109EA03006AE8CD /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		8486449A20F7358600B1BBD9 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		8486449C20F7369D00B1BBD9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8486449E20F75C8F00B1BBD9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -76,6 +77,7 @@
 		8416D1A220F654A9002494AC = {
 			isa = PBXGroup;
 			children = (
+				8463934E2109EA03006AE8CD /* Home.storyboard */,
 				8416D1AD20F654A9002494AC /* PhotoShareFetch */,
 				8416D1CB20F69241002494AC /* View */,
 				8416D1C720F691E0002494AC /* Models */,
@@ -160,7 +162,6 @@
 		8416D1C920F69209002494AC /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				84549EEC2109C02E002E9BB8 /* Home.storyboard */,
 				8416D1B720F654AB002494AC /* LaunchScreen.storyboard */,
 				8416D1B220F654A9002494AC /* Main.storyboard */,
 				8486449A20F7358600B1BBD9 /* Login.storyboard */,
@@ -266,6 +267,7 @@
 				8416D1C320F660F2002494AC /* GoogleService-Info.plist in Resources */,
 				8416D1B920F654AB002494AC /* LaunchScreen.storyboard in Resources */,
 				8416D1B620F654AB002494AC /* Assets.xcassets in Resources */,
+				8463934F2109EA03006AE8CD /* Home.storyboard in Resources */,
 				8486449B20F7358600B1BBD9 /* Login.storyboard in Resources */,
 				8416D1B420F654A9002494AC /* Main.storyboard in Resources */,
 			);

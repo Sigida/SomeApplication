@@ -56,9 +56,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="XYX-sf-uIU" kind="relationship" relationship="viewControllers" id="KqU-gB-adB"/>
                         <segue destination="Nxu-Pl-LZI" kind="relationship" relationship="viewControllers" id="hfR-0P-5Tl"/>
                         <segue destination="6lk-EA-JZk" kind="relationship" relationship="viewControllers" id="OAf-4a-hLO"/>
+                        <segue destination="BMS-cy-tdG" kind="relationship" relationship="viewControllers" id="ibL-ae-7DP"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QAs-L4-d9w" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -66,18 +66,19 @@
             <point key="canvasLocation" x="-620" y="-135"/>
         </scene>
         <!--Home-->
-        <scene sceneID="P5X-NP-aHm">
+        <scene sceneID="6Jf-Xs-zZt">
             <objects>
-                <viewControllerPlaceholder storyboardName="Home" id="XYX-sf-uIU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="3J9-Sx-Qej"/>
+                <viewControllerPlaceholder storyboardName="Home" id="BMS-cy-tdG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="tab_home_black" id="hlX-Vs-aU8"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XMQ-Sj-K1r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k1t-pC-7IV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="533.60000000000002" y="-1133.8830584707648"/>
+            <point key="canvasLocation" x="260" y="-1154"/>
         </scene>
     </scenes>
     <resources>
         <image name="tab_find_friends_black" width="25" height="25"/>
+        <image name="tab_home_black" width="25" height="25"/>
         <image name="tab_plus_black" width="25" height="25"/>
     </resources>
 </document>

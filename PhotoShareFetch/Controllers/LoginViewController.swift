@@ -57,7 +57,7 @@ extension LoginViewController: FUIAuthDelegate {
         guard let user = authDataResult?.user
             else { return }
         
-       
+        
         UserService.show(forUID: user.uid) { (user) in
             if let user = user {
                 // handle existing user
@@ -73,5 +73,5 @@ extension LoginViewController: FUIAuthDelegate {
             }
         }
     }
-    }
+}
 

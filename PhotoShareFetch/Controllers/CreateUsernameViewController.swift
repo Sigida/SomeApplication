@@ -16,11 +16,11 @@ class CreateUsernameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
-       
+        
+        
         
     }
-
+    
     @IBAction func nextButtonTapped(_ sender: UIButton) {
         print("tap")
         // check
@@ -32,16 +32,15 @@ class CreateUsernameViewController: UIViewController {
             guard let user = user else {
                 // handle error
                 return
-            }
-            
+            }            
             User.setCurrent(user, writeToUserDefaults: true)
             
-          let initialViewController = UIStoryboard.initialViewController(for: .main)
-      
+            let initialViewController = UIStoryboard.initialViewController(for: .main)
+            
             //Get reference to the current window and set the rootViewController to the initial view controller
             self.view.window?.rootViewController = initialViewController
             self.view.window?.makeKeyAndVisible()
-        
-}
-}
+            
+        }
+    }
 }
