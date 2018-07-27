@@ -13,6 +13,7 @@
 		8412D23620F8BF1B009962D5 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8412D23520F8BF1B009962D5 /* UserService.swift */; };
 		8412D23820F8CCD1009962D5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8412D23720F8CCD1009962D5 /* Constants.swift */; };
 		8412D23A20F8CF3F009962D5 /* Storyboard+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8412D23920F8CF3F009962D5 /* Storyboard+Utility.swift */; };
+		841365AE210BAE5400328340 /* LikeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841365AD210BAE5400328340 /* LikeService.swift */; };
 		84157364210273F100C47B65 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84157363210273F100C47B65 /* Post.swift */; };
 		8415736621027D3100C47B65 /* StorageReference+Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8415736521027D3100C47B65 /* StorageReference+Post.swift */; };
 		8415736821027EDE00C47B65 /*  UIImage+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8415736721027EDE00C47B65 /*  UIImage+Size.swift */; };
@@ -43,6 +44,7 @@
 		8412D23520F8BF1B009962D5 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		8412D23720F8CCD1009962D5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8412D23920F8CF3F009962D5 /* Storyboard+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard+Utility.swift"; sourceTree = "<group>"; };
+		841365AD210BAE5400328340 /* LikeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeService.swift; sourceTree = "<group>"; };
 		84157363210273F100C47B65 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		8415736521027D3100C47B65 /* StorageReference+Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StorageReference+Post.swift"; sourceTree = "<group>"; };
 		8415736721027EDE00C47B65 /*  UIImage+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " UIImage+Size.swift"; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				8412D23520F8BF1B009962D5 /* UserService.swift */,
 				84527A5D21008B8700F46C99 /* StorageService.swift */,
 				84527A5F2100A38B00F46C99 /* PostService.swift */,
+				841365AD210BAE5400328340 /* LikeService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				8459AE0E20FF27A500E367D7 /* MainTabBarController.swift in Sources */,
 				8412D23620F8BF1B009962D5 /* UserService.swift in Sources */,
 				84639E42210B391E0042078E /* PostActionCell.swift in Sources */,
+				841365AE210BAE5400328340 /* LikeService.swift in Sources */,
 				8415736821027EDE00C47B65 /*  UIImage+Size.swift in Sources */,
 				84639E3E210B14B40042078E /* PostImageCell.swift in Sources */,
 				84157364210273F100C47B65 /* Post.swift in Sources */,
