@@ -15,6 +15,13 @@ class HomeViewController: UIViewController {
     
     var posts = [Post]()
     
+    let timestampFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        
+        return dateFormatter
+    }()
+    
     @IBOutlet var tableView: UITableView!
     override func viewWillAppear(_ animated: Bool) {
         self.tableView.reloadData()
@@ -69,6 +76,7 @@ extension HomeViewController: UITableViewDataSource {
             
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostActionCell") as! PostActionCell
+            cell.timeAgoLabel.text = timestampFormatter.string(from: post.creationDate)
             
             return cell
             
