@@ -22,13 +22,27 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postImageCell" id="NZi-Q0-qOy">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostImageCell" rowHeight="375" id="NZi-Q0-qOy" customClass="PostImageCell" customModule="PhotoShareFetch" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="375"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NZi-Q0-qOy" id="LCo-5v-ria">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="374.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O6s-Nt-mj8">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="374.5"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="O6s-Nt-mj8" secondAttribute="bottom" id="cpu-y6-kHl"/>
+                                                <constraint firstItem="O6s-Nt-mj8" firstAttribute="top" secondItem="LCo-5v-ria" secondAttribute="top" id="fpK-E7-jIW"/>
+                                                <constraint firstItem="O6s-Nt-mj8" firstAttribute="leading" secondItem="LCo-5v-ria" secondAttribute="leading" id="g2H-cp-PkR"/>
+                                                <constraint firstAttribute="trailing" secondItem="O6s-Nt-mj8" secondAttribute="trailing" id="v3s-J4-Anv"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="postImageView" destination="O6s-Nt-mj8" id="uwU-wd-Gei"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -53,7 +67,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0E3-w6-ygc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1300" y="-1155"/>
+            <point key="canvasLocation" x="1300" y="-1155.472263868066"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="p6b-xy-Ms2">
