@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--PhotoShareFetch-->
         <scene sceneID="odh-YX-twZ">
             <objects>
                 <viewController id="Fpe-Iu-93y" customClass="HomeViewController" customModule="PhotoShareFetch" customModuleProvider="target" sceneMemberID="viewController">
@@ -157,7 +157,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9wM-AS-LTr"/>
                     </view>
-                    <navigationItem key="navigationItem" id="E2r-9A-sFP"/>
+                    <navigationItem key="navigationItem" title="PhotoShareFetch" id="E2r-9A-sFP"/>
                     <connections>
                         <outlet property="tableView" destination="JMx-R5-hnP" id="NeO-WP-Xi6"/>
                     </connections>
