@@ -22,8 +22,46 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostHeaderCell" rowHeight="54" id="7Wm-ly-OuP" customClass="PostHeaderCell" customModule="PhotoShareFetch" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="54"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Wm-ly-OuP" id="DKK-MD-mwv">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="53.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6I-d4-2Mk">
+                                                    <rect key="frame" x="15" y="0.0" width="80.5" height="53.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Seh-0O-2q9">
+                                                    <rect key="frame" x="331" y="4" width="44" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="YQB-yJ-GjY"/>
+                                                        <constraint firstAttribute="width" constant="44" id="Yhj-AL-0y4"/>
+                                                    </constraints>
+                                                    <state key="normal" image="btn_options_black"/>
+                                                    <connections>
+                                                        <action selector="optionsButtonTapped:" destination="7Wm-ly-OuP" eventType="touchUpInside" id="Pti-OZ-hEo"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Seh-0O-2q9" firstAttribute="centerY" secondItem="DKK-MD-mwv" secondAttribute="centerY" id="HXV-au-My6"/>
+                                                <constraint firstAttribute="bottom" secondItem="W6I-d4-2Mk" secondAttribute="bottom" id="QMJ-Y0-q2w"/>
+                                                <constraint firstItem="W6I-d4-2Mk" firstAttribute="leading" secondItem="DKK-MD-mwv" secondAttribute="leading" constant="15" id="UQ3-4R-U5D"/>
+                                                <constraint firstItem="Seh-0O-2q9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="W6I-d4-2Mk" secondAttribute="trailing" constant="15" id="Xvz-hO-QTY"/>
+                                                <constraint firstItem="W6I-d4-2Mk" firstAttribute="top" secondItem="DKK-MD-mwv" secondAttribute="top" id="bef-iS-EOl"/>
+                                                <constraint firstAttribute="trailing" secondItem="Seh-0O-2q9" secondAttribute="trailing" id="mpd-ou-fpJ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="usernameLabel" destination="W6I-d4-2Mk" id="dKv-hx-3ji"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostImageCell" rowHeight="375" id="NZi-Q0-qOy" customClass="PostImageCell" customModule="PhotoShareFetch" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="375"/>
+                                        <rect key="frame" x="0.0" y="82" width="375" height="375"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NZi-Q0-qOy" id="LCo-5v-ria">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="374.5"/>
@@ -93,6 +131,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="btn_options_black" width="24" height="24"/>
         <image name="tab_home_black" width="25" height="25"/>
     </resources>
 </document>
