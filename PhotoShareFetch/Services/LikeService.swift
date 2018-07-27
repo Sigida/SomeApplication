@@ -16,7 +16,6 @@ struct LikeService {
         guard let key = post.key else {
             return success(false)
         }
-        
         // create a reference to the current user's UID
         let currentUID = User.current.uid
         
@@ -29,8 +28,22 @@ struct LikeService {
                 assertionFailure(error.localizedDescription)
                 return success(false)
             }
-            //Handle a callback for the success of the write
-            return success(true)
+            //Adding Transaction Block
+            let likeCountRef = Database.database().reference().child("posts").child(post.poster.uid).child(key).child("like_count")
+            likeCountRef.runTransactionBlock({ (mutableData) -> TransactionResult in
+                let currentCount = mutableData.value as? Int ?? 0
+                
+                mutableData.value = currentCount + 1
+                
+                return TransactionResult.success(withValue: mutableData)
+            }, andCompletionBlock: { (error, _, _) in
+                if let error = error {
+                    assertionFailure(error.localizedDescription)
+                    success(false)
+                } else {
+                    success(true)
+                }
+            })
         }
     }
     
@@ -45,7 +58,25 @@ struct LikeService {
                 assertionFailure(error.localizedDescription)
                 return success(false)
             }
-            return success(true)
-        }
-    }
+          //Call the transaction API on the DatabaseReference location we want to update
+            let likeCountRef = Database.database().reference().child("posts").child(post.poster.uid).child(key).child("like_count")
+            likeCountRef.runTransactionBlock({ (mutableData) -> TransactionResult in
+                //Check that the value exists and increment it if it does
+                let currentCount = mutableData.value as? Int ?? 0
+                
+                mutableData.value = currentCount - 1
+                //Return the updated value
+                return TransactionResult.success(withValue: mutableData)
+            }, andCompletionBlock: { (error, _, _) in
+                //Handle the completion block if there's an error
+                if let error = error {
+                    assertionFailure(error.localizedDescription)
+                    success(false)
+                } else {
+                //Handle the completion block if the transaction was successfu
+                    success(true)
+                }
+            })
+}
+}
 }
