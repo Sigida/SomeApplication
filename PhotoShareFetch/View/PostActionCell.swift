@@ -10,6 +10,8 @@ import UIKit
 
 class PostActionCell: UITableViewCell {
     
+    static let height: CGFloat = 46
+    
     // MARK: - Subviews
 
     @IBOutlet weak var likeCountLabel: UILabel!
