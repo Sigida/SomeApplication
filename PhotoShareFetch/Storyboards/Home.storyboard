@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,8 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JMx-R5-hnP">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JMx-R5-hnP">
+                                <rect key="frame" x="0.0" y="-40" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostHeaderCell" rowHeight="54" id="7Wm-ly-OuP" customClass="PostHeaderCell" customModule="PhotoShareFetch" customModuleProvider="target">
@@ -82,6 +83,64 @@
                                             <outlet property="postImageView" destination="O6s-Nt-mj8" id="uwU-wd-Gei"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PostActionCell" rowHeight="46" id="rLD-PZ-gtX" customClass="PostActionCell" customModule="PhotoShareFetch" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="457" width="375" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rLD-PZ-gtX" id="AHX-Zm-eAg">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="45.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heG-5L-2YT">
+                                                    <rect key="frame" x="2" y="0.0" width="45.5" height="45.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="heG-5L-2YT" secondAttribute="height" multiplier="1:1" id="Ncv-2t-lLX"/>
+                                                    </constraints>
+                                                    <state key="normal" image="btn_heart_black_outline"/>
+                                                    <connections>
+                                                        <action selector="likeButtonTapped:" destination="rLD-PZ-gtX" eventType="touchUpInside" id="tic-dQ-Y84"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31 MINUTES AGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHm-Pi-FsM">
+                                                    <rect key="frame" x="267" y="0.0" width="93" height="45.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" red="0.60392156862745094" green="0.60392156862745094" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 Likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZ2-RY-98I">
+                                                    <rect key="frame" x="47.5" y="0.0" width="48" height="45.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CQS-s7-bT4">
+                                                    <rect key="frame" x="15" y="45" width="345" height="0.5"/>
+                                                    <color key="backgroundColor" red="0.85882352941176465" green="0.85882352941176465" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="0.5" id="dsX-wa-Yg2"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="jHm-Pi-FsM" secondAttribute="bottom" id="0bb-0F-xfT"/>
+                                                <constraint firstAttribute="trailing" secondItem="CQS-s7-bT4" secondAttribute="trailing" constant="15" id="0uj-VG-Pfp"/>
+                                                <constraint firstAttribute="trailing" secondItem="jHm-Pi-FsM" secondAttribute="trailing" constant="15" id="2Wv-mz-iv9"/>
+                                                <constraint firstItem="heG-5L-2YT" firstAttribute="top" secondItem="AHX-Zm-eAg" secondAttribute="top" id="Md4-LU-FAI"/>
+                                                <constraint firstItem="jHm-Pi-FsM" firstAttribute="top" secondItem="AHX-Zm-eAg" secondAttribute="top" id="aTI-SE-24K"/>
+                                                <constraint firstItem="KZ2-RY-98I" firstAttribute="top" secondItem="AHX-Zm-eAg" secondAttribute="top" id="fMB-V5-VfN"/>
+                                                <constraint firstAttribute="bottom" secondItem="KZ2-RY-98I" secondAttribute="bottom" id="gei-bb-2ds"/>
+                                                <constraint firstAttribute="bottom" secondItem="heG-5L-2YT" secondAttribute="bottom" id="kgq-YY-C8H"/>
+                                                <constraint firstItem="CQS-s7-bT4" firstAttribute="leading" secondItem="AHX-Zm-eAg" secondAttribute="leading" constant="15" id="nRU-lL-88Q"/>
+                                                <constraint firstItem="KZ2-RY-98I" firstAttribute="leading" secondItem="heG-5L-2YT" secondAttribute="trailing" id="nx8-0o-wa2"/>
+                                                <constraint firstItem="heG-5L-2YT" firstAttribute="leading" secondItem="AHX-Zm-eAg" secondAttribute="leading" constant="2" id="p4G-qw-tSH"/>
+                                                <constraint firstAttribute="bottom" secondItem="CQS-s7-bT4" secondAttribute="bottom" id="xmB-Fl-MUm"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="likeButton" destination="heG-5L-2YT" id="ydh-qP-cwd"/>
+                                            <outlet property="likeCountLabel" destination="KZ2-RY-98I" id="ORg-7P-VnC"/>
+                                            <outlet property="timeAgoLabel" destination="jHm-Pi-FsM" id="xEo-tR-8eh"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="Fpe-Iu-93y" id="iKL-5K-XEX"/>
@@ -131,6 +190,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="btn_heart_black_outline" width="24" height="24"/>
         <image name="btn_options_black" width="24" height="24"/>
         <image name="tab_home_black" width="25" height="25"/>
     </resources>
