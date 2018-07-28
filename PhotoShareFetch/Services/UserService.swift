@@ -59,9 +59,26 @@ struct UserService {
             guard let snapshot = snapshot.children.allObjects as? [DataSnapshot] else {
                 return completion([])
             }
-            let posts = snapshot.reversed().compactMap(Post.init)
-            completion(posts)
+            //use dispatch groups to wait for all of the asynchronous code to complete before calling our completion handler on the main thread
+            let dispatchGroup = DispatchGroup()
+            
+            let posts: [Post] = snapshot.reversed().compactMap {
+                guard let post = Post(snapshot: $0)
+                    else { return nil }
+                
+                dispatchGroup.enter()
+                
+                LikeService.isPostLiked(post) { (isLiked) in
+                    post.isLiked = isLiked
+                    
+                    dispatchGroup.leave()
+                }
+                
+                return post
+            }
+            
+            dispatchGroup.notify(queue: .main, execute: {
+                completion(posts)
+            })
         })
-    }
-    
 }

@@ -19,6 +19,8 @@ class Post {
     var likeCount: Int
     let poster: User
     
+    var isLiked = false
+    
     var dictValue: [String : Any] {
         let createdAgo = creationDate.timeIntervalSince1970
         let userDict = ["uid" : poster.uid,
