@@ -96,4 +96,12 @@ struct LikeService {
             }
         })
     }
+    
+    static func setIsLiked(_ isLiked: Bool, for post: Post, success: @escaping (Bool) -> Void) {
+        if isLiked {
+            create(for: post, success: success)
+        } else {
+            delete(for: post, success: success)
+        }
+    }
 }
