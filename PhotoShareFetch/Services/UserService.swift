@@ -14,7 +14,6 @@ struct UserService {
     
     typealias FIRUser = FirebaseAuth.User
     
-    
     static func show(forUID uid: String, completion: @escaping (User?) -> Void) {
         
         // construct a relative path to the reference of the user's information in the database.

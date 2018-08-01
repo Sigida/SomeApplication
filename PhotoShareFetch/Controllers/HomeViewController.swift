@@ -77,13 +77,20 @@ extension HomeViewController: UITableViewDataSource {
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostActionCell") as! PostActionCell
         
-            cell.likeCountLabel.text = "\(post.likeCount) likes"
-            cell.timeAgoLabel.text = timestampFormatter.string(from: post.creationDate)
+            cell.delegate = self
+            configureCell(cell, with: post)
+            
             return cell
             
         default:
             fatalError("Error: unexpected indexPath.")
         }
+    }
+    
+    func configureCell(_ cell: PostActionCell, with post: Post) {
+        cell.timeAgoLabel.text = timestampFormatter.string(from: post.creationDate)
+        cell.likeButton.isSelected = post.isLiked
+        cell.likeCountLabel.text = "\(post.likeCount) likes"
     }
 }
 
@@ -107,4 +114,9 @@ extension HomeViewController: UITableViewDelegate {
         }
     }
     
+}
+extension HomeViewController: PostActionCellDelegate {
+    func didTapLikeButton(_ likeButton: UIButton, on cell: PostActionCell) {
+        print("did tap like button")
+    }
 }
