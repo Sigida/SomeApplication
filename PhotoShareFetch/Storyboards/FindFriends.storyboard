@@ -41,6 +41,9 @@
                                                         <constraint firstAttribute="width" constant="115" id="zz0-dg-IdW"/>
                                                     </constraints>
                                                     <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="followButtonTapped:" destination="WqH-Vc-xv2" eventType="touchUpInside" id="lRd-cV-bAN"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -53,6 +56,10 @@
                                                 <constraint firstItem="nMR-i9-Fjn" firstAttribute="leading" secondItem="nKZ-Qv-9MV" secondAttribute="leading" constant="12" id="lM5-IV-fSO"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="followButton" destination="6en-SS-d2F" id="GUe-vW-OVF"/>
+                                            <outlet property="usernameLabel" destination="nMR-i9-Fjn" id="lEa-YW-Q6w"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -70,6 +77,9 @@
                         <viewLayoutGuide key="safeArea" id="wBS-pF-DQh"/>
                     </view>
                     <navigationItem key="navigationItem" title="Find Friends" id="zOH-Lf-WIe"/>
+                    <connections>
+                        <outlet property="tableView" destination="y8q-zl-d1E" id="8YO-yV-tiN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DaO-wz-6PM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
