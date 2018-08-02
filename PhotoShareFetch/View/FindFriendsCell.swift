@@ -19,7 +19,14 @@ class FindFriendsCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        followButton.layer.borderColor = UIColor.lightGray.cgColor
+        followButton.layer.borderWidth = 1
+        followButton.layer.cornerRadius = 6
+        followButton.clipsToBounds = true
+        
+        followButton.setTitle("Follow", for: .normal)
+        followButton.setTitle("Following", for: .selected)
     }
 
     // MARK: - IBActions
