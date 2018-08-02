@@ -21,13 +21,30 @@ class FindFriendsViewController: UIViewController {
     // MARK: - VC Lifecycle
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
+        super.viewDidLoad()        
         // remove separators for empty cells
         tableView.tableFooterView = UIView()
         tableView.rowHeight = 71
-
     }
+}
+// MARK: - UITableViewDataSource
 
-
+extension FindFriendsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return users.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FindFriendsCell") as! FindFriendsCell
+        configure(cell: cell, atIndexPath: indexPath)
+        
+        return cell
+    }
+    
+    func configure(cell: FindFriendsCell, atIndexPath indexPath: IndexPath) {
+        let user = users[indexPath.row]
+        
+        cell.usernameLabel.text = user.username
+        cell.followButton.isSelected = user.isFollowed
+    }
 }
