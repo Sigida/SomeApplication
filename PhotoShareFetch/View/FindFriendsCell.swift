@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol FindFriendsCellDelegate: class {
+    func didTapFollowButton(_ followButton: UIButton, on cell: FindFriendsCell)
+}
+
 class FindFriendsCell: UITableViewCell {
+    
+    weak var delegate: FindFriendsCellDelegate?
+
    
     // MARK: - Properties
     
@@ -32,7 +39,8 @@ class FindFriendsCell: UITableViewCell {
     // MARK: - IBActions
     
     @IBAction func followButtonTapped(_ sender: UIButton) {
-        print("follow button tapped")
+       delegate?.didTapFollowButton(sender, on: self)
+
     }
 
 }
