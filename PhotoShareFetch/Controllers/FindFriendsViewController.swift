@@ -20,6 +20,18 @@ class FindFriendsViewController: UIViewController {
     
     // MARK: - VC Lifecycle
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //fetch all users from our database and set them to  datasource
+        UserService.usersExcludingCurrentUser { [unowned self] (users) in
+            self.users = users
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()        
         // remove separators for empty cells
