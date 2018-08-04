@@ -24,9 +24,28 @@ struct FollowService {
     ref.updateChildValues(followData) { (error, _) in
     if let error = error {
     assertionFailure(error.localizedDescription)
+        success(false)
     }
-    // return whether the update was successful based on whether there was an error.
-    success(error == nil)
+        // get all posts for the user
+        UserService.posts(for: user) { (posts) in
+            // get all of the post keys for that user's posts. This will allow to write each post to the own timeline.
+            let postKeys = posts.compactMap { $0.key }
+            
+            //build a multiple location update using a dictionary that adds each of the followee's post to our timeline
+            var followData = [String : Any]()
+            let timelinePostDict = ["poster_uid" : user.uid]
+            postKeys.forEach { followData["timeline/\(currentUID)/\($0)"] = timelinePostDict }
+            
+            // write the dictionary to our database
+            ref.updateChildValues(followData, withCompletionBlock: { (error, ref) in
+                if let error = error {
+                    assertionFailure(error.localizedDescription)
+                }
+                
+                //return success based on whether we received an error
+                success(error == nil)
+            })
+        }
     }
 }
     
@@ -43,7 +62,22 @@ struct FollowService {
                 assertionFailure(error.localizedDescription)
             }
             
-            success(error == nil)
+            UserService.posts(for: user, completion: { (posts) in
+                var unfollowData = [String : Any]()
+                let postsKeys = posts.compactMap { $0.key }
+                postsKeys.forEach {
+                    // Use NSNull() object instead of nil because updateChildValues expects type [Hashable : Any]
+                    unfollowData["timeline/\(currentUID)/\($0)"] = NSNull()
+                }
+                
+                ref.updateChildValues(unfollowData, withCompletionBlock: { (error, ref) in
+                    if let error = error {
+                        assertionFailure(error.localizedDescription)
+                    }
+                    
+                    success(error == nil)
+                })
+            })
         }
     }
     //relationship between two users
