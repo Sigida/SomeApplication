@@ -40,6 +40,7 @@ class FindFriendsCell: UITableViewCell {
     
     @IBAction func followButtonTapped(_ sender: UIButton) {
        delegate?.didTapFollowButton(sender, on: self)
+       
 
     }
 
