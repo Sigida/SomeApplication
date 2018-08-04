@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
     // MARK: - Properties
     
     var posts = [Post]()
+    let refreshControl = UIRefreshControl()
     
     let timestampFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -30,19 +31,33 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
           configureTableView()
-        //fetching our posts from Firebase
-        UserService.posts(for: User.current) { (posts) in
+        
+        configureTableView()
+        reloadTimeline()
+       
+    }
+    // retrieve  timeline and refresh the table view
+    @objc func reloadTimeline() {
+         //fetching our posts from Firebase
+        UserService.timeline { (posts) in
             self.posts = posts
-            print("\(posts.count)")
-            self.tableView.reloadData()
+           //stop and hide the activity indicator of the refresh control if it is currently being displayed to the user.
+            if self.refreshControl.isRefreshing {
+                self.refreshControl.endRefreshing()
+            }
             
+            self.tableView.reloadData()
         }
-    }    
+    }
+    
     func configureTableView() {
         // remove separators for empty cells
         tableView.tableFooterView = UIView()
         // remove separators from cells
         tableView.separatorStyle = .none
+        // add pull to refresh
+        refreshControl.addTarget(self, action: #selector(reloadTimeline), for: .valueChanged)
+        tableView.addSubview(refreshControl)
     }
 }
 
