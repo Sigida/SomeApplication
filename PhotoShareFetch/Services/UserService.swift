@@ -79,7 +79,7 @@ struct UserService {
             })
         })
 }
-    
+    //fetch all users
     static func usersExcludingCurrentUser(completion: @escaping ([User]) -> Void) {
         let currentUser = User.current
         // Create a DatabaseReference to read all users from the database
@@ -110,4 +110,41 @@ struct UserService {
             })
         })
     }
+    //fetch all of a user's followers( UIDs) and return them as an String array.
+    static func followers(for user: User, completion: @escaping ([String]) -> Void) {
+        let followersRef = Database.database().reference().child("followers").child(user.uid)
+        
+        followersRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let followersDict = snapshot.value as? [String : Bool] else {
+                return completion([])
+            }
+            
+            let followersKeys = Array(followersDict.keys)
+            completion(followersKeys)
+        })
+    }
 }
+
+/* JSON tree structure will look like:
+ PhotoShareFetch : {
+ timeline: {
+ user1_uid: {
+ post1_key: {
+ poster_uid: user2_uid
+ },
+ post2_key: {
+ poster_uid: user2_uid
+ },
+ post3_key: {
+ poster_uid: user1_uid
+ }
+ },
+ user2_uid: { ... }
+ },
+ followers: { ... },
+ following: { ... },
+ postLikes: { ... },
+ posts: { ... },
+ users: { ... }
+ }
+*/

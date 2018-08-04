@@ -12,8 +12,6 @@ import FirebaseDatabase
 
 struct PostService {
     
- 
-    
     static func create(for image: UIImage) {
         let imageRef = StorageReference.newPostImageReference()
         StorageService.uploadImage(image, at: imageRef) { (downloadURL) in
@@ -33,12 +31,31 @@ struct PostService {
         let currentUser = User.current
         // Initialize a new Post using the data passed in by the parameters.
         let post = Post(imageURL: urlString, imageHeight: aspectHeight)
-        // Convert the new post object into a dictionary so that it can be written as JSON in our database.
-        let dict = post.dictValue
         
-        // Construct the relative path to the location where we want to store the new post data
-        let postRef = Database.database().reference().child("posts").child(currentUser.uid).childByAutoId()
-        //Write the data to the specified location.
-        postRef.updateChildValues(dict)
+        // create references to the important locations that we're planning to write data.
+        let rootRef = Database.database().reference()
+        let newPostRef = rootRef.child("posts").child(currentUser.uid).childByAutoId()
+        let newPostKey = newPostRef.key
+        
+        // Use our class method to get an array of all of our follower UIDs
+        UserService.followers(for: currentUser) { (followerUIDs) in
+            // construct a timeline JSON object where we store our current user's uid. need to do this because when  fetch a timeline for a given user, will need the uid of the post in order to read the post from the Post subtree.
+            let timelinePostDict = ["poster_uid" : currentUser.uid]
+            
+            // create a mutable dictionary that will store all of the data we want to write to our database. initialize it by writing the current timeline dictionary to our own timeline because our own uid will be excluded from our follower UIDs.
+            var updatedData: [String : Any] = ["timeline/\(currentUser.uid)/\(newPostKey)" : timelinePostDict]
+            
+            // add our post to each of our follower's timelines.
+            for uid in followerUIDs {
+                updatedData["timeline/\(uid)/\(newPostKey)"] = timelinePostDict
+            }
+            
+            // make sure to write the post which are trying to create
+            let postDict = post.dictValue
+            updatedData["posts/\(currentUser.uid)/\(newPostKey)"] = postDict
+            
+            //write multi-location update to the database.
+            rootRef.updateChildValues(updatedData)
+        }
     }
 }
