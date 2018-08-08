@@ -77,21 +77,20 @@ extension HomeViewController: UITableViewDataSource {
         let post = posts[indexPath.section]
         switch indexPath.row {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PostHeaderCell") as! PostHeaderCell
+            let cell: PostHeaderCell = tableView.dequeueReusableCell()
             cell.usernameLabel.text = post.poster.username
             
             return cell
             
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PostImageCell") as! PostImageCell
+            let cell: PostImageCell = tableView.dequeueReusableCell()
             let imageURL = URL(string: post.imageURL)
             cell.postImageView.kf.setImage(with: imageURL)
             
             return cell
             
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PostActionCell") as! PostActionCell
-        
+            let cell: PostActionCell = tableView.dequeueReusableCell()
             cell.delegate = self
             configureCell(cell, with: post)
             

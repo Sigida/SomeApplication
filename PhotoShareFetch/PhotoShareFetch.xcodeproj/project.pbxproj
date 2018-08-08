@@ -30,6 +30,7 @@
 		84569EC420F8950800FA983D /* CreateUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84569EC320F8950800FA983D /* CreateUsernameViewController.swift */; };
 		8459AE0E20FF27A500E367D7 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8459AE0D20FF27A500E367D7 /* MainTabBarController.swift */; };
 		84612BAC211B21E0006D20A4 /* DatabaseReference+Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84612BAB211B21E0006D20A4 /* DatabaseReference+Location.swift */; };
+		84612BAE211B3959006D20A4 /* UITableView+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84612BAD211B3959006D20A4 /* UITableView+Utility.swift */; };
 		8463934F2109EA03006AE8CD /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8463934E2109EA03006AE8CD /* Home.storyboard */; };
 		84639E3E210B14B40042078E /* PostImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84639E3D210B14B40042078E /* PostImageCell.swift */; };
 		84639E40210B2FC80042078E /* PostHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84639E3F210B2FC80042078E /* PostHeaderCell.swift */; };
@@ -67,6 +68,7 @@
 		84569EC320F8950800FA983D /* CreateUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameViewController.swift; sourceTree = "<group>"; };
 		8459AE0D20FF27A500E367D7 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		84612BAB211B21E0006D20A4 /* DatabaseReference+Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatabaseReference+Location.swift"; sourceTree = "<group>"; };
+		84612BAD211B3959006D20A4 /* UITableView+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Utility.swift"; sourceTree = "<group>"; };
 		8463934E2109EA03006AE8CD /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		84639E3D210B14B40042078E /* PostImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageCell.swift; sourceTree = "<group>"; };
 		84639E3F210B2FC80042078E /* PostHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHeaderCell.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				8415736521027D3100C47B65 /* StorageReference+Post.swift */,
 				8415736721027EDE00C47B65 /*  UIImage+Size.swift */,
 				84612BAB211B21E0006D20A4 /* DatabaseReference+Location.swift */,
+				84612BAD211B3959006D20A4 /* UITableView+Utility.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				8486449F20F75C8F00B1BBD9 /* User.swift in Sources */,
 				84527A5E21008B8700F46C99 /* StorageService.swift in Sources */,
 				8486449D20F7369D00B1BBD9 /* LoginViewController.swift in Sources */,
+				84612BAE211B3959006D20A4 /* UITableView+Utility.swift in Sources */,
 				8459AE0E20FF27A500E367D7 /* MainTabBarController.swift in Sources */,
 				8412D23620F8BF1B009962D5 /* UserService.swift in Sources */,
 				84639E42210B391E0042078E /* PostActionCell.swift in Sources */,
