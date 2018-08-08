@@ -17,7 +17,7 @@ struct UserService {
     static func show(forUID uid: String, completion: @escaping (User?) -> Void) {
         
         // construct a relative path to the reference of the user's information in the database.
-        let ref = Database.database().reference().child("users").child(uid)
+       let ref = DatabaseReference.toLocation(.showUser(uid: uid))
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let user = User(snapshot: snapshot) else {
@@ -33,7 +33,7 @@ struct UserService {
         let userAttrs = ["username": username]
         
         // specify a relative path for the location of where we want to store our data
-        let ref = Database.database().reference().child("users").child(firUser.uid)
+        let ref = DatabaseReference.toLocation(.showUser(uid: firUser.uid))
         
         // write the data we want to store
         ref.setValue(userAttrs) { (error, ref) in
@@ -52,7 +52,7 @@ struct UserService {
     static func posts(for user: User,
                       completion: @escaping ([Post]) -> Void) {
         
-        let ref = Database.database().reference().child("posts").child(user.uid)
+        let ref = DatabaseReference.toLocation(.posts(uid: user.uid))
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let snapshot = snapshot.children.allObjects as? [DataSnapshot] else {
@@ -83,7 +83,7 @@ struct UserService {
     static func usersExcludingCurrentUser(completion: @escaping ([User]) -> Void) {
         let currentUser = User.current
         // Create a DatabaseReference to read all users from the database
-        let ref = Database.database().reference().child("users")
+        let ref = DatabaseReference.toLocation(.users)
         
         //Read the users node from the database
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -112,7 +112,8 @@ struct UserService {
     }
     //fetch all of a user's followers( UIDs) and return them as an String array.
     static func followers(for user: User, completion: @escaping ([String]) -> Void) {
-        let followersRef = Database.database().reference().child("followers").child(user.uid)
+        
+        let followersRef = DatabaseReference.toLocation(.followers(uid: user.uid))
         
         followersRef.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let followersDict = snapshot.value as? [String : Bool] else {
@@ -128,7 +129,7 @@ struct UserService {
     static func timeline(completion: @escaping ([Post]) -> Void) {
         let currentUser = User.current
         
-        let timelineRef = Database.database().reference().child("timeline").child(currentUser.uid)
+        let timelineRef = DatabaseReference.toLocation(.timeline(uid: currentUser.uid))
         timelineRef.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
                 else { return completion([]) }

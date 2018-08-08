@@ -21,7 +21,7 @@ struct LikeService {
         
         //code to like a post
         //Define a location for where we're planning to write data
-        let likesRef = Database.database().reference().child("postLikes").child(key).child(currentUID)
+        let likesRef = DatabaseReference.toLocation(.likes(postKey: key, currentUID: currentUID))
         //Write the data by setting the value for the location specified
         likesRef.setValue(true) { (error, _) in
             if let error = error {
@@ -29,7 +29,7 @@ struct LikeService {
                 return success(false)
             }
             //Adding Transaction Block
-            let likeCountRef = Database.database().reference().child("posts").child(post.poster.uid).child(key).child("like_count")
+            let likeCountRef = DatabaseReference.toLocation(.likesCount(posterUID: post.poster.uid, postKey: key))
             likeCountRef.runTransactionBlock({ (mutableData) -> TransactionResult in
                 let currentCount = mutableData.value as? Int ?? 0
                 
@@ -52,14 +52,14 @@ struct LikeService {
             return success(false)
         }
         let currentUID = User.current.uid
-        let likesRef = Database.database().reference().child("postLikes").child(key).child(currentUID)
+        let likesRef = DatabaseReference.toLocation(.likes(postKey: key, currentUID: currentUID))
         likesRef.setValue(nil) { (error, _) in
             if let error = error {
                 assertionFailure(error.localizedDescription)
                 return success(false)
             }
           //Call the transaction API on the DatabaseReference location we want to update
-            let likeCountRef = Database.database().reference().child("posts").child(post.poster.uid).child(key).child("like_count")
+            let likeCountRef = DatabaseReference.toLocation(.likesCount(posterUID: post.poster.uid, postKey: key))
             likeCountRef.runTransactionBlock({ (mutableData) -> TransactionResult in
                 //Check that the value exists and increment it if it does
                 let currentCount = mutableData.value as? Int ?? 0
@@ -86,7 +86,7 @@ struct LikeService {
             return completion(false)
         }
        //building a relative path to the location of where we store the current user's like data for a specific post, if a like were to exist.
-        let likesRef = Database.database().reference().child("postLikes").child(postKey)
+        let likesRef = DatabaseReference.toLocation(.isLiked(postKey: postKey)) //Database.database().reference().child("postLikes").child(postKey)
         //we use a special query that checks whether a value exists at the location that we're reading from. If there is, we know that the current user has liked the post. Otherwise, we know that the user hasn't.
         likesRef.queryEqual(toValue: nil, childKey: User.current.uid).observeSingleEvent(of: .value, with: { (snapshot) in
             if let _ = snapshot.value as? [String : Bool] {

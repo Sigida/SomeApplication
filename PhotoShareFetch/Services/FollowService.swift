@@ -20,7 +20,7 @@ struct FollowService {
                       "following/\(currentUID)/\(user.uid)" : true]
     
     // write our new relationship to Firebase.
-    let ref = Database.database().reference()
+    let ref = DatabaseReference.toLocation(.root)
     ref.updateChildValues(followData) { (error, _) in
     if let error = error {
     assertionFailure(error.localizedDescription)
@@ -56,7 +56,7 @@ struct FollowService {
         let followData = ["followers/\(user.uid)/\(currentUID)" : NSNull(),
                           "following/\(currentUID)/\(user.uid)" : NSNull()]
         
-        let ref = Database.database().reference()
+        let ref = DatabaseReference.toLocation(.root)
         ref.updateChildValues(followData) { (error, ref) in
             if let error = error {
                 assertionFailure(error.localizedDescription)
@@ -91,8 +91,7 @@ struct FollowService {
     //determine the current follow relationship between users.
     static func isUserFollowed(_ user: User, byCurrentUserWithCompletion completion: @escaping (Bool) -> Void) {
         let currentUID = User.current.uid
-        let ref = Database.database().reference().child("followers").child(user.uid)
-        
+        let ref = DatabaseReference.toLocation(.followers(uid: user.uid))
         ref.queryEqual(toValue: nil, childKey: currentUID).observeSingleEvent(of: .value, with: { (snapshot) in
             if let _ = snapshot.value as? [String : Bool] {
                 completion(true)

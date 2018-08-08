@@ -33,8 +33,8 @@ struct PostService {
         let post = Post(imageURL: urlString, imageHeight: aspectHeight)
         
         // create references to the important locations that we're planning to write data.
-        let rootRef = Database.database().reference()
-        let newPostRef = rootRef.child("posts").child(currentUser.uid).childByAutoId()
+       
+        let newPostRef = DatabaseReference.toLocation(.newPost(currentUID: currentUser.uid))
         let newPostKey = newPostRef.key
         
         // Use our class method to get an array of all of our follower UIDs
@@ -55,12 +55,13 @@ struct PostService {
             updatedData["posts/\(currentUser.uid)/\(newPostKey)"] = postDict
             
             //write multi-location update to the database.
-            rootRef.updateChildValues(updatedData)
+           DatabaseReference.toLocation(.root).updateChildValues(updatedData)
         }
     }
     //Read data from FireBase (construct an array of Post from timeline)
-    static func show(forKey postKey: String, posterUID: String, completion: @escaping (Post?) -> Void) {
-        let ref = Database.database().reference().child("posts").child(posterUID).child(postKey)
+    static func show(forKey postKey: String, posterUID: String,completion: @escaping (Post?) -> Void) {
+        
+        let ref = DatabaseReference.toLocation(.showPost(uid: posterUID, postKey: postKey))
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let post = Post(snapshot: snapshot) else {
