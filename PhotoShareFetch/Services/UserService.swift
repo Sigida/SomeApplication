@@ -125,11 +125,18 @@ struct UserService {
         })
     }
     
-    //(reading the current user's timeline data)allow user to read the current user's timeline
-    static func timeline(completion: @escaping ([Post]) -> Void) {
+   
+    static func timeline(pageSize: UInt, lastPostKey: String? = nil, completion: @escaping ([Post]) -> Void) {
         let currentUser = User.current
         
         let timelineRef = DatabaseReference.toLocation(.timeline(uid: currentUser.uid))
+    
+        //let ref = Database.database().reference().child("timeline").child(currentUser.uid)
+        var query = timelineRef.queryOrderedByKey().queryLimited(toLast: pageSize)
+        if let lastPostKey = lastPostKey {
+            query = query.queryEnding(atValue: lastPostKey)
+        }
+
         timelineRef.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
                 else { return completion([]) }
@@ -158,9 +165,10 @@ struct UserService {
                 completion(posts.reversed())
             })
         })
+        
+       
     }
 }
-
 /* JSON tree structure will look like:
  PhotoShareFetch : {
  timeline: {

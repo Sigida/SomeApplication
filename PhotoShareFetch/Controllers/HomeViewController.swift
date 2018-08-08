@@ -12,6 +12,8 @@ import Kingfisher
 class HomeViewController: UIViewController {
     
     // MARK: - Properties
+   
+    let paginationHelper = PSFPaginationHelper<Post>(serviceMethod: UserService.timeline)
     
     var posts = [Post]()
     let refreshControl = UIRefreshControl()
@@ -32,22 +34,21 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
           configureTableView()
         
-        configureTableView()
+       configureTableView()
         reloadTimeline()
        
     }
-    // retrieve  timeline and refresh the table view
+    
     @objc func reloadTimeline() {
-         //fetching our posts from Firebase
-        UserService.timeline { (posts) in
+        self.paginationHelper.reloadData(completion: { [unowned self] (posts) in
             self.posts = posts
-           //stop and hide the activity indicator of the refresh control if it is currently being displayed to the user.
+            
             if self.refreshControl.isRefreshing {
                 self.refreshControl.endRefreshing()
             }
             
             self.tableView.reloadData()
-        }
+        })
     }
     
     func configureTableView() {
@@ -91,6 +92,7 @@ extension HomeViewController: UITableViewDataSource {
             
         case 2:
             let cell: PostActionCell = tableView.dequeueReusableCell()
+
             cell.delegate = self
             configureCell(cell, with: post)
             
@@ -98,6 +100,18 @@ extension HomeViewController: UITableViewDataSource {
             
         default:
             fatalError("Error: unexpected indexPath.")
+        }
+        
+        func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+            if indexPath.section >= posts.count - 1 {
+                paginationHelper.paginate(completion: { [unowned self] (posts) in
+                    self.posts.append(contentsOf: posts)
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                })
+            }
         }
     }
     

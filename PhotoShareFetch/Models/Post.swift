@@ -10,7 +10,7 @@
 import UIKit
 import FirebaseDatabase.FIRDataSnapshot
 
-class Post {
+class Post:PSFKeyed {
     
     var key: String?
     let imageURL: String
